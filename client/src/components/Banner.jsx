@@ -5,7 +5,7 @@ export default function Banner() {
         <div className='section-container bg-gradient-to-r from-[#FAFAFA] from-0% to-[#FCFCFC] to-100%'>
             <div className='py-24 flex flex-col md:flex-row-reverse justify-between items-center gap-8'>
                 {/* image */}
-                <div className='md:w-1/2'>
+                <div className='md:w-1/2 px-3'>
                     <img src="/images/home/banner.png" alt="" />
                     <div className='flex flex-col md:flex-row items-center justify-around -mt-14 gap-4'>
                         {/* tooltip 1 */}
@@ -14,11 +14,11 @@ export default function Banner() {
                             <div className='space-y-1'>
                                 <h5 className='font-medium mb-1'>Spicy noodles</h5>
                                 <div className="rating rating-sm">
-                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-500" />
-                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-500" />
-                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-500" checked />
-                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-500" />
-                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-500" />
+                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-500" readOnly />
+                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-500" readOnly />
+                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-500" checked readOnly />
+                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-500" readOnly />
+                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-500" readOnly />
                                 </div>
                                 <p className='text-red'>$18.00</p>
                             </div>
@@ -29,11 +29,11 @@ export default function Banner() {
                             <div className='space-y-1'>
                                 <h5 className='font-medium mb-1'>Vegetables salad</h5>
                                 <div className="rating rating-sm">
-                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-500" />
-                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-500" />
-                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-500" />
-                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-500" checked />
-                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-500" />
+                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-500" readOnly />
+                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-500" readOnly />
+                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-500" readOnly />
+                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-500" checked readOnly />
+                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-500" readOnly />
                                 </div>
                                 <p className='text-red'>$22.00</p>
                             </div>
@@ -42,13 +42,14 @@ export default function Banner() {
                 </div>
                 {/* text */}
                 <div className='md:w-1/2 space-y-7 px-4 text-secondary'>
-                    <h2 className='md:text-5xl text-4xl font-bold leading-snug'>
-                        Dive into Delights of Delectable <span className='text-green'>Food</span>
+                    <h2 className='text-4xl md:text-5xl font-bold leading-snug md:leading-tight'>
+                        Dive into Delights
+                        <br />of Delectable <span className='text-green'>Food</span>
                     </h2>
                     <p className='text-xl text-[#4A4A4A]'>
                         Where Each Plate Weaves a Story of Culinary Mastery and Passionate Craftsmanship
                     </p>
-                    <button className='btn btn-outline rounded-full bg-green hover:bg-green px-8 py-3 font-semibold text-white hover:text-white hover:opacity-70 cursor-pointer'>Order Now</button>
+                    <button className='btn border-none rounded-full bg-green hover:bg-green px-7 py-3 font-semibold text-white hover:text-white hover:opacity-70 cursor-pointer'>Order Now</button>
                 </div>
             </div>
         </div>

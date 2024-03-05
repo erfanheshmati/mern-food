@@ -94,14 +94,14 @@ export default function Navbar() {
                                     <span className="font-bold text-lg">8 Items</span>
                                     <span className="text-info">Subtotal: $999</span>
                                     <div className="card-actions">
-                                        <button className="btn btn-block btn-outline bg-green text-white hover:bg-green hover:text-white hover:opacity-70">View cart</button>
+                                        <button className="btn btn-block border-none bg-green text-white hover:bg-green hover:text-white hover:opacity-70">View cart</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         {/* contact btn */}
                         <div>
-                            <a className="btn btn-outline bg-green rounded-full px-5 text-white flex items-center gap-2 hover:bg-green hover:text-white hover:opacity-70">
+                            <a className="btn border-none bg-green rounded-full px-5 text-white flex items-center gap-2 hover:bg-green hover:text-white hover:opacity-70">
                                 <BiPhoneCall /> Contact
                             </a>
                         </div>
