@@ -3,6 +3,7 @@ import Banner from '../../components/Banner'
 import Categories from './Categories'
 import SpecialDishes from './SpecialDishes'
 import Testimonials from './Testimonials'
+import Services from './Services'
 
 export default function Home() {
     return (
@@ -11,6 +12,7 @@ export default function Home() {
             <Categories />
             <SpecialDishes />
             <Testimonials />
+            <Services />
         </>
     )
 }
