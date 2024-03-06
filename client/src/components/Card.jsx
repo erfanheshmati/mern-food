@@ -10,7 +10,7 @@ export default function Card({ item }) {
     }
 
     return (
-        <div className="card w-80 lg:w-96 bg-white shadow-xl relative mt-0 mb-8 lg:my-10 mx-5">
+        <div className="card w-80 lg:w-96 shadow-xl relative mt-5 mb-8 lg:my-10 mx-5 bg-white">
             <div className={`rating gap-1 absolute right-2 top-2 p-4 heartStar bg-green ${isLiked ? "text-rose-500" : "text-white"}`} onClick={handleLike}>
                 <FaHeart className='h-5 w-5 cursor-pointer' />
             </div>

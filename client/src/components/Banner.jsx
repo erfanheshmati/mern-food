@@ -3,7 +3,7 @@ import React from 'react'
 export default function Banner() {
     return (
         <div className='section-container bg-gradient-to-r from-[#FAFAFA] from-0% to-[#FCFCFC] to-100%'>
-            <div className='py-24 flex flex-col md:flex-row-reverse justify-between items-center gap-8'>
+            <div className='py-20 flex flex-col md:flex-row-reverse justify-between items-center gap-8'>
                 {/* image */}
                 <div className='md:w-1/2 px-4'>
                     <img src="/images/home/banner.png" alt="" />
@@ -24,7 +24,7 @@ export default function Banner() {
                             </div>
                         </div>
                         {/* tooltip 2 */}
-                        <div className='hidden md:flex bg-white py-2 px-3 rounded-2xl items-center gap-3 shadow-md w-72'>
+                        <div className='hidden lg:flex bg-white py-2 px-3 rounded-2xl items-center gap-3 shadow-md w-72'>
                             <img src="/images/home/b-food1.png" alt="" className='rounded-2xl' />
                             <div className='space-y-1'>
                                 <h5 className='font-medium mb-1'>Vegetables salad</h5>

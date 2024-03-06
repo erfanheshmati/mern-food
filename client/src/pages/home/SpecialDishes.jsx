@@ -41,19 +41,19 @@ export default function SpecialDishes() {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToShow: 4,
+        slidesToScroll: 4,
         initialSlide: 0,
         responsive: [
             {
-                breakpoint: 1024,
+                breakpoint: 1700,
                 settings: {
                     slidesToShow: 3,
                     slidesToScroll: 3
                 }
             },
             {
-                breakpoint: 600,
+                breakpoint: 900,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2
@@ -72,14 +72,14 @@ export default function SpecialDishes() {
     };
 
     return (
-        <div className='section-container py-20 bg-white text-secondary relative'>
+        <div className='section-container py-16 bg-white text-secondary relative'>
             <div className='text-left'>
                 <p className='subtitle'>Special Dishes</p>
                 <h2 className='title w-[320px] md:w-[520px]'>Stand Out Dishes from Our Menu</h2>
             </div>
 
             {/* arrow btn */}
-            <div className='md:absolute right-3 top-40 mb-10 md:mr-24'>
+            <div className='md:absolute right-3 top-36 mb-10 mr-3 lg:mr-2 xl:mr-24'>
                 <button onClick={() => slider?.current?.slickPrev()} className='btn border-none text-secondary p-2 rounded-full ml-5 bg-gray-200 hover:bg-gray-200 hover:text-secondary hover:opacity-70'>
                     <FaAngleLeft className='w-8 h-8 p-1' />
                 </button>
@@ -89,7 +89,7 @@ export default function SpecialDishes() {
             </div>
 
             {/* slider */}
-            <Slider ref={slider} {...settings} className=''>
+            <Slider ref={slider} {...settings}>
                 {recipes.map((item, index) => (
                     <Card key={index} item={item} />
                 ))}

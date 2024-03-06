@@ -58,7 +58,7 @@ export default function Navbar() {
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </div>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52">
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 bg-white shadow-xl rounded-box w-52">
                             {navItems}
                         </ul>
                     </div>
@@ -89,7 +89,7 @@ export default function Navbar() {
                                     <span className="badge badge-sm indicator-item badge-outline bg-white p-1">8</span>
                                 </div>
                             </div>
-                            <div tabIndex={0} className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-white shadow">
+                            <div tabIndex={0} className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-white shadow-md">
                                 <div className="card-body">
                                     <span className="font-bold text-lg">8 Items</span>
                                     <span className="text-info">Subtotal: $999</span>

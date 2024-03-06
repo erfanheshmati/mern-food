@@ -3,7 +3,7 @@ import { FaStar } from 'react-icons/fa'
 
 export default function Testimonials() {
     return (
-        <div className='section-container bg-white text-secondary'>
+        <div className='section-container bg-white text-secondary py-16'>
             <div className='flex flex-col md:flex-row items-center justify-between gap-12'>
                 {/* image */}
                 <div className='md:w-1/2'>
