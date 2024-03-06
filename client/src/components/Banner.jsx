@@ -5,7 +5,7 @@ export default function Banner() {
         <div className='section-container bg-gradient-to-r from-[#FAFAFA] from-0% to-[#FCFCFC] to-100%'>
             <div className='py-24 flex flex-col md:flex-row-reverse justify-between items-center gap-8'>
                 {/* image */}
-                <div className='md:w-1/2 px-3'>
+                <div className='md:w-1/2 px-4'>
                     <img src="/images/home/banner.png" alt="" />
                     <div className='flex flex-col md:flex-row items-center justify-around -mt-14 gap-4'>
                         {/* tooltip 1 */}
@@ -41,7 +41,7 @@ export default function Banner() {
                     </div>
                 </div>
                 {/* text */}
-                <div className='md:w-1/2 space-y-7 px-4 text-secondary'>
+                <div className='md:w-1/2 space-y-7 text-secondary'>
                     <h2 className='text-4xl md:text-5xl font-bold leading-snug md:leading-tight'>
                         Dive into Delights
                         <br />of Delectable <span className='text-green'>Food</span>

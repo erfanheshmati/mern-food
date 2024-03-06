@@ -14,7 +14,7 @@ export default function Testimonials() {
                     <div className='text-left md:w-4/5'>
                         <p className='subtitle'>Testimonials</p>
                         <h2 className='title'>What Our Customers Say About Us</h2>
-                        <blockquote className='my-5 leading-[]'>
+                        <blockquote className='my-5'>
                             “I had the pleasure of dining at Foodi last night, and I'm still raving about the experience! The attention to detail in presentation and service was impeccable”
                         </blockquote>
                         {/* avatar */}

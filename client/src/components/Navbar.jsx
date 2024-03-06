@@ -51,7 +51,7 @@ export default function Navbar() {
     )
 
     return (
-        <header className='max-w-screen-2xl container mx-auto fixed top-0 left-0 right-0 text-secondary'>
+        <header className='mx-auto fixed top-0 left-0 right-0 text-secondary'>
             <div className={`navbar xl:px-24 ${isSticky ? "shadow-md bg-white transition-all duration-300 ease-in-out" : ""}`}>
                 <div className="navbar-start">
                     <div className="dropdown">

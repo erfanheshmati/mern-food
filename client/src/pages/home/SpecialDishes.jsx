@@ -72,7 +72,7 @@ export default function SpecialDishes() {
     };
 
     return (
-        <div className='section-container py-20 px-4 bg-white text-secondary relative'>
+        <div className='section-container py-20 bg-white text-secondary relative'>
             <div className='text-left'>
                 <p className='subtitle'>Special Dishes</p>
                 <h2 className='title w-[320px] md:w-[520px]'>Stand Out Dishes from Our Menu</h2>
