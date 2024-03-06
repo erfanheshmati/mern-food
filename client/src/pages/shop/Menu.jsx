@@ -97,8 +97,8 @@ export default function Menu() {
                     {/* filtering btns */}
                     <div className='flex flex-row justify-start md:items-center gap-4 md:gap-8 flex-wrap'>
                         <button onClick={showAll} className={selectedCategory === "all" ? "active" : ""}>All</button>
-                        <button onClick={() => filterData("salad")} className={selectedCategory === "salad" ? "active" : ""}>Salad</button>
                         <button onClick={() => filterData("pizza")} className={selectedCategory === "pizza" ? "active" : ""}>Pizza</button>
+                        <button onClick={() => filterData("salad")} className={selectedCategory === "salad" ? "active" : ""}>Salad</button>
                         <button onClick={() => filterData("soup")} className={selectedCategory === "soup" ? "active" : ""}>Soup</button>
                         <button onClick={() => filterData("dessert")} className={selectedCategory === "dessert" ? "active" : ""}>Dessert</button>
                         <button onClick={() => filterData("drink")} className={selectedCategory === "drink" ? "active" : ""}>Drink</button>
