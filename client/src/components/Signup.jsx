@@ -2,8 +2,9 @@ import React from 'react'
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa'
 import { Link } from "react-router-dom"
 import { useForm } from 'react-hook-form'
+import Modal from './Modal';
 
-export default function Modal() {
+export default function Signup() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = (data) => {
@@ -11,14 +12,14 @@ export default function Modal() {
     }
 
     return (
-        <dialog id="my_modal" className="modal modal-middle sm:modal-middle">
-            <div className="modal-box bg-white pt-0 md:pt-2">
-                <div className="modal-action flex-col">
-                    <form className="card-body p-0 md:px-4 md:pt-0 md:pb-4" method='dialog' onSubmit={handleSubmit(onSubmit)}>
+        <div className='bg-white min-h-screen px-4 pt-40 md:pt-72 lg:pt-28 xl:pt-20 2xl:pt-44'>
+            <div className='max-w-md bg-white shadow-2xl w-full mx-auto'>
+                <div className="modal-action text-secondary">
+                    <form className="card-body" method='dialog' onSubmit={handleSubmit(onSubmit)}>
                         {/* close btn */}
                         <div className='self-end'>
                             <form method="dialog">
-                                <button className="btn btn-sm btn-circle btn-ghost">✕</button>
+                                <Link to="/" className="btn btn-sm btn-circle btn-ghost">✕</Link>
                             </form>
                         </div>
                         {/* email input */}
@@ -45,13 +46,18 @@ export default function Modal() {
                             <input
                                 type='submit'
                                 className="btn border-none bg-green text-white hover:bg-green hover:text-white hover:opacity-70"
-                                value="Login"
+                                value="Signup"
                             />
                         </div>
                         {/* signup link */}
                         <div className='flex items-center justify-center gap-1 mt-1'>
-                            Dont have an account?
-                            <Link to="/signup" className="label-text-alt link link-hover text-sm text-red">Signup Now</Link>
+                            Have an account?
+                            <button
+                                onClick={() => document.getElementById('my_modal').showModal()}
+                                className="label-text-alt link link-hover text-sm text-red"
+                            >
+                                Login
+                            </button>
                         </div>
                         {/* login with socials */}
                         <div className='flex flex-row items-center justify-center gap-2 mt-3 mb-1'>
@@ -67,7 +73,8 @@ export default function Modal() {
                         </div>
                     </form>
                 </div>
+                <Modal />
             </div>
-        </dialog>
+        </div>
     )
 }
