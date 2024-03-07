@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import logo from "/logo.png"
 import { FaRegUser } from "react-icons/fa"
 import Modal from './Modal'
+import { AuthContext } from '../contexts/AuthProvider'
+import Profile from './Profile'
 
 export default function Navbar() {
     const [isSticky, setIsSticky] = useState(false)
+
+    const { user } = useContext(AuthContext)
+    console.log(user)
 
     useEffect(() => {
         const handleScroll = () => {
@@ -55,7 +60,7 @@ export default function Navbar() {
     )
 
     return (
-        <header className='mx-auto fixed top-0 left-0 right-0 text-secondary'>
+        <header className='mx-auto fixed top-0 left-0 right-0 text-secondary pr-2 sm:pr-3 md:pr-4 lg:pr-5 xl:pr-0'>
             <div className={`navbar xl:px-24 ${isSticky ? "shadow-md bg-white transition-all duration-300 ease-in-out" : ""}`}>
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -104,15 +109,17 @@ export default function Navbar() {
                             </div>
                         </div>
                         {/* login btn */}
-                        <div>
-                            <button
-                                onClick={() => document.getElementById('my_modal').showModal()}
-                                className="btn border-none bg-green rounded-full px-5 text-white flex items-center gap-2 hover:bg-green hover:text-white hover:opacity-70"
-                            >
-                                <FaRegUser /> <span className='hidden sm:block'>Login</span>
-                            </button>
-                            <Modal />
-                        </div>
+                        {user ? <Profile user={user} /> : (
+                            <div>
+                                <button
+                                    onClick={() => document.getElementById('my_modal').showModal()}
+                                    className="btn border-none bg-green rounded-full px-5 text-white flex items-center gap-2 hover:bg-green hover:text-white hover:opacity-70"
+                                >
+                                    <FaRegUser /> <span className='hidden sm:block'>Login</span>
+                                </button>
+                                <Modal />
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
