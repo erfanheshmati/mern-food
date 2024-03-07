@@ -49,7 +49,7 @@ export default function AuthProvider({ children }) {
         return () => unsubscribe();
     }, [])
 
-    const authInfo = { user, createUser, signUpWithGmail, logIn, logOut, updateUserProfile }
+    const authInfo = { user, createUser, signUpWithGmail, logIn, logOut, updateUserProfile, loading }
 
     return (
         <AuthContext.Provider value={authInfo}>
