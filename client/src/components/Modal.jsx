@@ -1,13 +1,20 @@
 import React from 'react'
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa'
 import { Link } from "react-router-dom"
+import { useForm } from 'react-hook-form'
 
 export default function Modal() {
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
+    const onSubmit = (data) => {
+        console.log(data);
+    }
+
     return (
         <dialog id="my_modal" className="modal modal-middle sm:modal-middle">
             <div className="modal-box bg-white pt-0 md:pt-2">
                 <div className="modal-action flex-col">
-                    <form className="card-body p-0 md:px-4 md:pt-0 md:pb-4" method='dialog'>
+                    <form className="card-body p-0 md:px-4 md:pt-0 md:pb-4" method='dialog' onSubmit={handleSubmit(onSubmit)}>
                         {/* close btn */}
                         <div className='self-end'>
                             <form method="dialog">
@@ -16,20 +23,21 @@ export default function Modal() {
                                 </button>
                             </form>
                         </div>
-                        {/* form inputs */}
+                        {/* email input */}
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text text-secondary">Email</span>
                             </label>
-                            <input type="email" placeholder="example@gmail.com" className="input input-bordered bg-white" required />
+                            <input type="email" placeholder="example@gmail.com" className="input input-bordered bg-white" {...register('email')} required />
                         </div>
+                        {/* password input */}
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text text-secondary">Password</span>
                             </label>
-                            <input type="password" placeholder="********" className="input input-bordered bg-white" required />
+                            <input type="password" placeholder="********" className="input input-bordered bg-white" {...register('password')} required />
                             <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                <a href="#" className="label-text-alt link link-hover text-sm">Forgot password?</a>
                             </label>
                         </div>
                         {/* errors */}
