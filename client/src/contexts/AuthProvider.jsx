@@ -27,7 +27,7 @@ export default function AuthProvider({ children }) {
 
     // logout
     const logOut = () => {
-        signOut(auth)
+        return signOut(auth)
     }
 
     // update profile
@@ -41,12 +41,12 @@ export default function AuthProvider({ children }) {
     // check signed-in user
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            if (currentUser) {
-                setUser(currentUser)
-                setLoading(false)
-            }
+            setUser(currentUser)
+            setLoading(false)
         });
-        return () => unsubscribe();
+        return () => {
+            return unsubscribe();
+        }
     }, [])
 
     const authInfo = { user, createUser, signUpWithGmail, logIn, logOut, updateUserProfile, loading }
