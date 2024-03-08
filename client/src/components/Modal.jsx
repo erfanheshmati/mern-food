@@ -43,7 +43,7 @@ export default function Modal() {
     }
 
     return (
-        <dialog dialog id="my_modal" className="modal modal-middle sm:modal-middle" >
+        <dialog dialog id="my_modal" className="modal modal-middle sm:modal-middle max-w-md mx-auto" >
             <div className="modal-box bg-white pt-0 md:pt-2">
                 <div className="modal-action flex-col">
                     <form className="card-body p-0 md:px-4 md:pt-0 md:pb-4" method='dialog' onSubmit={handleSubmit(onSubmit)}>

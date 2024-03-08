@@ -9,7 +9,7 @@ import toast, { Toaster } from 'react-hot-toast'
 export default function Signup() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const { createUser, loading } = useContext(AuthContext)
+    const { createUser } = useContext(AuthContext)
 
     const [errorMessage, setErrorMessage] = useState("")
 
@@ -36,7 +36,7 @@ export default function Signup() {
         <>
             <Toaster />
             <div className='bg-white min-h-screen px-4 pt-28 md:pt-72 lg:pt-28 xl:pt-20 2xl:pt-44'>
-                <div className='max-w-md bg-white shadow-2xl rounded-2xl w-full mx-auto'>
+                <div className='max-w-sm bg-white shadow-2xl rounded-2xl w-full mx-auto'>
                     <div className="modal-action text-secondary flex flex-col">
                         <form className="card-body" method='dialog' onSubmit={handleSubmit(onSubmit)}>
                             {/* close btn */}
