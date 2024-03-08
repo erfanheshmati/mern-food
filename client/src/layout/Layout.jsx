@@ -9,7 +9,7 @@ export default function Layout() {
     const { loading } = useContext(AuthContext)
 
     return (
-        <div className='bg-primaryBG'>
+        <div className='bg-primaryBG text-secondary'>
             {loading ? <Loading /> :
                 <>
                     <Navbar />
@@ -17,7 +17,6 @@ export default function Layout() {
                     <Footer />
                 </>
             }
-
         </div>
     )
 }

@@ -9,7 +9,7 @@ import toast, { Toaster } from 'react-hot-toast'
 export default function Signup() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const { createUser, logIn } = useContext(AuthContext)
+    const { createUser, loading } = useContext(AuthContext)
 
     const [errorMessage, setErrorMessage] = useState("")
 
@@ -23,16 +23,12 @@ export default function Signup() {
         const email = data.email
         const password = data.password
         createUser(email, password)
-            .then((result) => {
-                const user = result.user
-                toast.success("Account created successfully", { className: "mt-4 2xl:mt-12" })
-                setTimeout(myNavigation, 2000)
-                function myNavigation() {
-                    navigate(from, { replace: true })
-                }
+            .then(() => {
+                toast.success('Account created successfully', { className: "mt-6 2xl:mt-12" })
+                setTimeout(() => navigate(from, { replace: true }), 1500)
             })
             .catch((error) => {
-                setErrorMessage(error.message)
+                setErrorMessage(error.code)
             })
     }
 

@@ -9,7 +9,6 @@ export default function Navbar() {
     const [isSticky, setIsSticky] = useState(false)
 
     const { user } = useContext(AuthContext)
-    console.log(user)
 
     useEffect(() => {
         const handleScroll = () => {
@@ -35,11 +34,11 @@ export default function Navbar() {
                     <summary>Menu</summary>
                     <ul className="p-2 bg-white">
                         <li><a href='/menu'>All</a></li>
-                        <li><a>Pitza</a></li>
-                        <li><a>Salad</a></li>
-                        <li><a>Soup</a></li>
-                        <li><a>Dessert</a></li>
-                        <li><a>Drink</a></li>
+                        <li><a href='/menu'>Pitza</a></li>
+                        <li><a href='/menu'>Salad</a></li>
+                        <li><a href='/menu'>Soup</a></li>
+                        <li><a href='/menu'>Dessert</a></li>
+                        <li><a href='/menu'>Drink</a></li>
                     </ul>
                 </details>
             </li>
@@ -60,8 +59,8 @@ export default function Navbar() {
     )
 
     return (
-        <header className='mx-auto fixed top-0 left-0 right-0 text-secondary pr-2 sm:pr-3 md:pr-4 lg:pr-5 xl:pr-0'>
-            <div className={`navbar xl:px-24 ${isSticky ? "shadow-md bg-white transition-all duration-300 ease-in-out" : ""}`}>
+        <header className='mx-auto fixed top-0 left-0 right-0  pr-2 sm:pr-3 md:pr-4 lg:pr-5 xl:pr-0'>
+            <div className={`navbar xl:px-24 ${isSticky ? "bg-white shadow-md transition-all duration-300 ease-in-out" : ""}`}>
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
