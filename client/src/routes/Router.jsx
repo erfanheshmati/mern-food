@@ -3,6 +3,7 @@ import Layout from "../layout/Layout"
 import Home from "../pages/home/Home"
 import Menu from "../pages/shop/Menu"
 import Signup from "../components/Signup"
+import PrivateRouter from "../private-routes/PrivateRouter"
 
 const router = createBrowserRouter([
     {
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/menu',
-                element: <Menu />
+                element: <PrivateRouter><Menu /></PrivateRouter>
             },
         ]
     },
