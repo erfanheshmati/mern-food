@@ -55,6 +55,18 @@ async function run() {
       const result = await cartCollection.deleteOne({ _id: new ObjectId(id) });
       res.send(result);
     });
+    app.put("/cart/:id", async (req, res) => {
+      const id = req.params.id;
+      const { quantity } = req.body;
+      const options = { upsert: true };
+      const updateDoc = { $set: { quantity: parseInt(quantity, 10) } };
+      const result = await cartCollection.updateOne(
+        { _id: new ObjectId(id) },
+        updateDoc,
+        options
+      );
+      res.send(result);
+    });
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("MongoDB connected successfully");

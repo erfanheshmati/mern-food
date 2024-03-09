@@ -120,7 +120,7 @@ export default function Navbar() {
                                         {cart.length < 2 ? `${cart.length} Item` : `${cart.length} Items`}
                                     </span>
                                     <span className="text-info">
-                                        Total Price: ${cartTotalPrice()}
+                                        Subtotal: ${cartTotalPrice().toFixed(2)}
                                     </span>
                                     <div className="card-actions">
                                         <Link to="/cart" className="btn btn-block border-none bg-green text-white hover:bg-green hover:text-white hover:opacity-70">
