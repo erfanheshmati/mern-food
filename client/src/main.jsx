@@ -4,8 +4,14 @@ import router from './routes/Router'
 import './index.css'
 import AuthProvider from './contexts/AuthProvider'
 
+// tanstack query
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+const queryClient = new QueryClient()
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <AuthProvider>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </AuthProvider>
 )

@@ -91,9 +91,9 @@ export default function Menu() {
             </div>
 
             {/* menu shop */}
-            <div className='section-container lg:px-0 xl:px-24 pt-16 pb-8'>
+            <div className='px-0 lg:px-0 xl:px-24 pt-16 pb-8'>
                 {/* filtering & sorting */}
-                <div className='px-4 flex flex-col md:flex-row justify-between items-center space-y-4 mb-2'>
+                <div className='px-4 md:px-8 lg:px-4 flex flex-col md:flex-row justify-between items-center space-y-4 mb-2'>
                     {/* filtering btns */}
                     <div className='flex flex-row justify-start md:items-center gap-4 md:gap-8 flex-wrap'>
                         <button onClick={showAll} className={selectedCategory === "all" ? "active" : ""}>All</button>
@@ -119,7 +119,7 @@ export default function Menu() {
                     </div>
                 </div>
                 {/* products card */}
-                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 sm:mx-8 md:mx-8 lg:mx-0 lg:mr-4 xl:mx-0'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 sm:mx-8 md:mx-8 lg:mx-0 lg:mr-10 xl:mx-0'>
                     {currentItems.map((item) => (
                         <Card key={item._id} item={item} />
                     ))}

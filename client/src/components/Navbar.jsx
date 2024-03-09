@@ -4,12 +4,17 @@ import { FaRegUser } from "react-icons/fa"
 import Modal from './Modal'
 import { AuthContext } from '../contexts/AuthProvider'
 import Profile from './Profile'
+import { Link } from 'react-router-dom'
+import useCart from '../hooks/useCart'
 
 export default function Navbar() {
     const [isSticky, setIsSticky] = useState(false)
 
     const { user } = useContext(AuthContext)
-    console.log(user)
+    // console.log(user)
+
+    const [cart, refetch] = useCart()
+    // console.log(cart)
 
     useEffect(() => {
         const handleScroll = () => {
@@ -24,6 +29,11 @@ export default function Navbar() {
             window.addEventListener('scroll', handleScroll)
         }
     }, [])
+
+    const cartTotalPrice = () => {
+        const sum = cart.map((item) => item.price).reduce((accumulator, currentValue) => { return accumulator + currentValue }, 0)
+        return sum
+    }
 
     const navItems = (
         <>
@@ -60,23 +70,27 @@ export default function Navbar() {
     )
 
     return (
-        <header className='mx-auto fixed top-0 left-0 right-0  pr-2 sm:pr-3 md:pr-4 lg:pr-5 xl:pr-0'>
-            <div className={`navbar xl:px-24 ${isSticky ? "bg-white shadow-md transition-all duration-300 ease-in-out" : ""}`}>
+        <header className='mx-auto fixed top-0 left-0 right-0'>
+            <div className={`navbar xl:px-24 ${isSticky ? "bg-white shadow-lg transition-all duration-300 ease-in-out" : ""}`}>
                 <div className="navbar-start">
                     <div className="dropdown">
+                        {/* small devices menu btn */}
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </div>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 bg-white shadow-xl rounded-box w-52">
+                        {/* small devices menu */}
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 bg-white shadow-2xl rounded-box w-52">
                             {navItems}
                         </ul>
                     </div>
+                    {/* logo */}
                     <div className='ml-2 lg:ml-0'>
                         <a href='/'>
                             <img src={logo} alt="" />
                         </a>
                     </div>
                 </div>
+                {/* large devices menu */}
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         {navItems}
@@ -95,15 +109,23 @@ export default function Navbar() {
                             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
                                 <div className="indicator">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                                    <span className="badge badge-sm indicator-item border-none bg-green text-white p-2">4</span>
+                                    <span className="badge badge-sm indicator-item border-none bg-green text-white p-2">
+                                        {cart.length || 0}
+                                    </span>
                                 </div>
                             </div>
-                            <div tabIndex={0} className="mt-3 -ml-16 z-[1] card card-compact dropdown-content w-44 bg-white shadow-md">
+                            <div tabIndex={0} className="mt-3 -ml-16 z-[1] card card-compact dropdown-content w-44 bg-white shadow-2xl">
                                 <div className="card-body">
-                                    <span className="font-bold text-lg">4 Items</span>
-                                    <span className="text-info">Subtotal: $999</span>
+                                    <span className="font-bold text-lg">
+                                        {cart.length < 2 ? `${cart.length} Item` : `${cart.length} Items`}
+                                    </span>
+                                    <span className="text-info">
+                                        Total Price: ${cartTotalPrice()}
+                                    </span>
                                     <div className="card-actions">
-                                        <button className="btn btn-block border-none bg-green text-white hover:bg-green hover:text-white hover:opacity-70">View cart</button>
+                                        <Link to="/cart" className="btn btn-block border-none bg-green text-white hover:bg-green hover:text-white hover:opacity-70">
+                                            View Cart
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
