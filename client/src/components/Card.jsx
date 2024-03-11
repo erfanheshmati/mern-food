@@ -6,6 +6,8 @@ import Swal from "sweetalert2"
 import useCart from '../hooks/useCart'
 
 export default function Card({ item }) {
+    const { _id, name, image, price } = item
+
     const [isLiked, setIsLiked] = useState(false)
 
     const { user } = useContext(AuthContext)
@@ -19,9 +21,9 @@ export default function Card({ item }) {
         setIsLiked(!isLiked)
     }
 
-    const handleAddToCart = (item) => {
-        if (user && user?.email) {
-            const cartItem = { menuItemId: item._id, name: item.name, quantity: 1, image: item.image, price: item.price, email: user.email }
+    const handleAddToCart = () => {
+        if (user && user.email) {
+            const cartItem = { menuItemId: _id, name: name, quantity: 1, image: image, price: price, email: user.email }
             fetch("http://localhost:5000/cart", {
                 method: "POST",
                 headers: {
@@ -36,7 +38,7 @@ export default function Card({ item }) {
                         Swal.fire({
                             position: "center",
                             icon: "success",
-                            title: "The product added to your cart successfully",
+                            title: "Food has been added to your shopping cart",
                             showConfirmButton: false,
                             timer: 1500
                         });
