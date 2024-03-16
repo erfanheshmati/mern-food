@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../contexts/AuthProvider'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 export default function Profile({ user }) {
     const { logOut } = useContext(AuthContext)
@@ -33,8 +33,9 @@ export default function Profile({ user }) {
                     <ul className="menu p-4 w-48 md:w-80 min-h-full bg-gray-200 shadow-2xl text-secondary">
                         {/* sidebar content here */}
                         <li><a href='/update-profile'>Profile</a></li>
-                        <li><a>Order</a></li>
-                        <li><a>Setting</a></li>
+                        <li><a href='/order'>Order</a></li>
+                        <li><a>Settings</a></li>
+                        <li><Link to="/dashboard">Dashboard</Link></li>
                         <li><a onClick={handleLogout}>Logout</a></li>
                     </ul>
                 </div>
