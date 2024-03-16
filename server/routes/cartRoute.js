@@ -6,10 +6,11 @@ const {
   updateCartItem,
   getSingleCart,
 } = require("../controllers/cartController");
+const { verifyToken } = require("../middlewares/verifyToken");
 
 const router = express.Router();
 
-router.get("/", getAllCart);
+router.get("/", verifyToken, getAllCart);
 router.get("/:id", getSingleCart);
 router.post("/", addToCart);
 router.delete("/:id", deleteCartItem);
