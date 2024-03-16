@@ -1,13 +1,15 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
+import { Link } from "react-router-dom"
 import useCart from '../../hooks/useCart'
 import { FaTrash } from "react-icons/fa"
 import Swal from 'sweetalert2'
-import { AuthContext } from '../../contexts/AuthProvider'
+import useAuth from '../../hooks/useAuth'
+import axios from 'axios'
 
 export default function Cart() {
     const [cart, refetch] = useCart()
 
-    const { user } = useContext(AuthContext)
+    const { user } = useAuth()
 
     const [cartItems, setCartItems] = useState([])
 
@@ -22,14 +24,13 @@ export default function Cart() {
             confirmButtonText: "Delete"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/cart/${item._id}`, { method: 'DELETE' })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.deletedCount > 0) {
+                axios.delete(`http://localhost:5000/cart/${item._id}`)
+                    .then((response) => {
+                        if (response) {
                             refetch()
                             Swal.fire(
-                                "Deleted!",
-                                "Your item has been deleted.",
+                                "Successfully Done",
+                                "Your item has been deleted",
                                 "success"
                             )
                         }
@@ -97,21 +98,33 @@ export default function Cart() {
     }, 0)
 
     return (
-        <div className={`section-container bg-white min-h-screen ${cart.length === 0 ? " flex items-center justify-center" : "py-32"}`} >
+        <div className={`section-container min-h-screen bg-white ${cart.length === 0 ? "flex items-center justify-center" : "py-20"}`} >
 
-            {
-                cart.length === 0 ?
-                    <div className=''>
-                        <img src="/images/cart/cart-empty.png" alt="" className='mx-auto' />
-                    </div>
-                    : null
+            {/* empty cart */}
+            {cart.length === 0 ? (
+                <div className='flex flex-col items-center justify-center'>
+                    <img src="/images/cart/cart-empty.png" alt="" />
+                    <Link to="/menu">
+                        <button className="btn border-none bg-green hover:bg-green text-white hover:text-white hover:opacity-70">
+                            Back to Menu
+                        </button>
+                    </Link>
+                </div>
+            ) : null
             }
 
-            {/* cart items */}
             < div className={`${cart.length === 0 ? "hidden" : ""}`}>
-                {/* cart table */}
-                < div className={`overflow-x-auto rounded-md`
-                }>
+                {/* banner */}
+                <div className="py-10 lg:pt-10 lg:pb-20 flex flex-col items-center justify-center">
+                    {/* content */}
+                    <div className=" text-center px-4 space-y-7">
+                        <h2 className="text-3xl md:text-5xl font-bold">
+                            Items Added to The<span className="text-green"> Cart</span>
+                        </h2>
+                    </div>
+                </div>
+                {/* cart items */}
+                < div className="overflow-x-auto rounded-md">
                     {/* cart table */}
                     < table className="table" >
                         {/* head */}
@@ -122,7 +135,7 @@ export default function Cart() {
                                 <th>Name</th>
                                 <th>Quantity</th>
                                 <th>Price</th>
-                                <th>Action</th>
+                                <th>Delete</th>
                             </tr>
                         </thead >
                         <tbody>
@@ -164,7 +177,7 @@ export default function Cart() {
                                     </td>
                                     <td>${calculatePrice(item).toFixed(2)}</td>
                                     <th>
-                                        <button className="btn btn-ghost btn-xs text-red" onClick={() => handleDelete(item)}>
+                                        <button className="btn btn-ghost btn-sm text-red" onClick={() => handleDelete(item)}>
                                             <FaTrash />
                                         </button>
                                     </th>
@@ -175,17 +188,20 @@ export default function Cart() {
                 </div >
                 {/* customer details */}
                 < div className='my-12 flex flex-col md:flex-row justify-between items-start gap-6' >
-                    <div className='md:w-1/2 space-y-2'>
+                    <div className='lg:w-1/2 space-y-2'>
                         <h3 className='font-bold'>Customer Details</h3>
                         <p>Name: {user.displayName}</p>
                         <p>Email: {user.email}</p>
                     </div>
-                    <div className='md:w-1/2 space-y-2'>
+                    <div className='lg:w-1/2 space-y-2'>
                         <h3 className='font-bold'>Shopping Details</h3>
                         <p>Total Items: {cart.length}</p>
                         <p>Total Price: ${cartSubTotal.toFixed(2)}</p>
-                        <button className="btn border-none bg-green hover:bg-green text-white hover:text-white hover:opacity-70">
-                            Proceed Checkout
+
+                    </div>
+                    <div className=''>
+                        <button className="btn border-none bg-green hover:bg-green text-white hover:text-white hover:opacity-70 leading-4">
+                            Proceed to Checkout
                         </button>
                     </div>
                 </div >

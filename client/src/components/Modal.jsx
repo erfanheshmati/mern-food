@@ -1,27 +1,35 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa'
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import { useForm } from 'react-hook-form'
-import { AuthContext } from '../contexts/AuthProvider';
+import useAxiosPublic from '../hooks/useAxiosPublic';
+import useAuth from '../hooks/useAuth';
 
 export default function Modal() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const { signUpWithGmail, logIn } = useContext(AuthContext)
+    const { signUpWithGmail, logIn } = useAuth()
 
     const [errorMessage, setErrorMessage] = useState("")
+
+    const axiosPublic = useAxiosPublic()
 
     // redirecting to home page or specific page
     const location = useLocation()
     const navigate = useNavigate()
     const from = location.state?.from?.pathname || "/"
 
-    // email and password sign-in
+    // sign-in using email and password 
     const onSubmit = (data) => {
         const email = data.email
         const password = data.password
         logIn(email, password)
             .then(() => {
+                const userInfo = {
+                    name: data.name,
+                    email: data.email,
+                }
+                axiosPublic.post("/user", userInfo)
                 document.getElementById("my_modal").close()
                 navigate(from, { replace: true })
             })
@@ -30,22 +38,27 @@ export default function Modal() {
             })
     }
 
-    // google sign-in
+    // sign-in using gmail
     const handleLogin = () => {
         signUpWithGmail()
-            .then(() => {
-                document.getElementById("my_modal").close()
-                navigate(from, { replace: true })
+            .then((result) => {
+                const userInfo = {
+                    name: result?.user?.displayName,
+                    email: result?.user?.email,
+                }
+                axiosPublic.post("/user", userInfo)
+                    .then(() => {
+                        document.getElementById("my_modal").close()
+                        navigate(from, { replace: true })
+                    })
             })
-            .catch((error) => {
-                setErrorMessage(error.code)
-            })
+            .catch((error) => setErrorMessage(error.code))
     }
 
     return (
         <dialog dialog id="my_modal" className="modal modal-middle sm:modal-middle max-w-md mx-auto" >
-            <div className="modal-box bg-white pt-0 md:pt-2">
-                <div className="modal-action flex-col">
+            <div className="modal-box bg-white">
+                <div className="modal-action flex-col m-0">
                     <form className="card-body p-0 md:px-4 md:pt-0 md:pb-4" method='dialog' onSubmit={handleSubmit(onSubmit)}>
                         {/* close btn */}
                         <div className='self-end'>
@@ -82,9 +95,9 @@ export default function Modal() {
                         </div>
                     </form>
                     {/* signup link */}
-                    <div className='flex items-center justify-center gap-1 mt-2 text-secondary'>
+                    <div className='flex items-center justify-center gap-1 mt-6 mb-3 text-secondary'>
                         Dont have an account?
-                        <Link to="/signup" className="label-text-alt link link-hover text-sm text-red">Signup Now</Link>
+                        <Link to="/signup" className="label-text-alt link link-hover text-sm text-red">Signup</Link>
                     </div>
                     {/* login with socials */}
                     <div className='flex flex-row items-center justify-center gap-2 mt-4 mb-2'>
