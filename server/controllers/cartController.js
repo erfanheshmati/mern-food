@@ -23,7 +23,10 @@ exports.getSingleCart = async (req, res) => {
 exports.addToCart = async (req, res) => {
   const { menuItemId, name, image, price, quantity, email } = req.body;
   try {
-    const existingCartItem = await Cart.findOne({ menuItemId: menuItemId });
+    const existingCartItem = await Cart.findOne({
+      menuItemId: menuItemId,
+      email: email,
+    });
     if (existingCartItem) {
       return res
         .status(400)
