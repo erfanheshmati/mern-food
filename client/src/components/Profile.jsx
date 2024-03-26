@@ -32,8 +32,8 @@ export default function Profile({ user }) {
                     <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-48 md:w-80 min-h-full bg-gray-200 shadow-2xl text-secondary">
                         {/* sidebar content here */}
-                        <li><a href='/update-profile'>Profile</a></li>
-                        <li><a href='/order'>Order</a></li>
+                        <li><Link to="/update-profile">Profile</Link></li>
+                        <li><Link to="/order">Order</Link></li>
                         <li><a>Settings</a></li>
                         <li><Link to="/dashboard">Dashboard</Link></li>
                         <li><a onClick={handleLogout}>Logout</a></li>
