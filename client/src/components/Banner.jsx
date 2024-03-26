@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from "react-router-dom"
 
 export default function Banner() {
     return (
@@ -49,7 +49,9 @@ export default function Banner() {
                     <p className='text-xl text-[#4A4A4A]'>
                         Where Each Plate Weaves a Story of Culinary Mastery and Passionate Craftsmanship
                     </p>
-                    <button className='btn border-none rounded-full bg-green hover:bg-green px-7 py-3 font-semibold text-white hover:text-white hover:opacity-70 cursor-pointer'>Order Now</button>
+                    <Link to="/menu">
+                        <button className='btn border-none rounded-full mt-6 bg-green hover:bg-green px-7 py-3 font-semibold text-white hover:text-white hover:opacity-70 cursor-pointer'>Order Now</button>
+                    </Link>
                 </div>
             </div>
         </div>
