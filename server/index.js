@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const menuRoute = require("./routes/menuRoute");
 const cartRoute = require("./routes/cartRoute");
 const userRoute = require("./routes/userRoute");
+const paymentRoute = require("./routes/paymentRoute");
 
 require("dotenv").config();
 require("./database");
@@ -27,5 +28,6 @@ app.post("/jwt", async (req, res) => {
 app.use("/menu", menuRoute);
 app.use("/cart", cartRoute);
 app.use("/user", userRoute);
+app.use("/payment", paymentRoute);
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
