@@ -98,7 +98,7 @@ export default function Cart() {
     }, 0)
 
     return (
-        <div className={`section-container min-h-screen bg-white ${cart.length === 0 ? "flex items-center justify-center" : "py-20"}`} >
+        <div className={`section-container min-h-screen bg-white ${cart.length === 0 ? "flex items-center justify-center" : "py-28"}`} >
 
             {/* empty cart */}
             {cart.length === 0 ? (
@@ -200,9 +200,11 @@ export default function Cart() {
 
                     </div>
                     <div className=''>
-                        <button className="btn border-none bg-green hover:bg-green text-white hover:text-white hover:opacity-70 leading-4">
-                            Proceed to Checkout
-                        </button>
+                        <Link to="/process-checkout">
+                            <button className="btn border-none bg-green hover:bg-green text-white hover:text-white hover:opacity-70 leading-4">
+                                Proceed to Checkout
+                            </button>
+                        </Link>
                     </div>
                 </div >
             </div >

@@ -6,7 +6,7 @@ import useAxiosPublic from '../hooks/useAxiosPublic';
 import useAuth from '../hooks/useAuth';
 
 export default function Modal() {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit } = useForm();
 
     const { signUpWithGmail, logIn } = useAuth()
 
