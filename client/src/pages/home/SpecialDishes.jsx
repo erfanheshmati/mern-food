@@ -29,12 +29,19 @@ export default function SpecialDishes() {
     const slider = useRef(null)
 
     useEffect(() => {
-        fetch("/menu.json")
-            .then((res) => res.json())
-            .then((data) => {
-                const specials = data.filter((item) => item.category === "popular")
-                setRecipes(specials)
-            })
+        const fetchData = async () => {
+            try {
+                const response = await fetch("http://localhost:5000/menu")
+                    .then((res) => res.json())
+                    .then((data) => {
+                        const specials = data.filter((item) => item.category === "popular")
+                        setRecipes(specials)
+                    })
+            } catch (error) {
+                console.error("Fetching data failed", error)
+            }
+        }
+        fetchData()
     }, [])
 
     const settings = {
