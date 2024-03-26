@@ -12,6 +12,8 @@ import Users from "../pages/dashboard/admin/Users"
 import AddMenu from "../pages/dashboard/admin/AddMenu"
 import ManageItems from "../pages/dashboard/admin/ManageItems"
 import UpdateMenu from "../pages/dashboard/admin/UpdateMenu"
+import Payment from "../pages/shop/Payment"
+import Order from "../pages/dashboard/Order"
 
 const router = createBrowserRouter([
     {
@@ -28,11 +30,19 @@ const router = createBrowserRouter([
             },
             {
                 path: '/cart',
-                element: <Cart />
+                element: <PrivateRouter><Cart /></PrivateRouter>
             },
             {
                 path: '/update-profile',
                 element: <PrivateRouter><UpdateProfile /></PrivateRouter>
+            },
+            {
+                path: '/process-checkout',
+                element: <PrivateRouter><Payment /></PrivateRouter>
+            },
+            {
+                path: '/order',
+                element: <PrivateRouter><Order /></PrivateRouter>
             },
         ]
     },
@@ -40,6 +50,7 @@ const router = createBrowserRouter([
         path: '/signup',
         element: <Signup />
     },
+    // admin routes
     {
         path: '/dashboard',
         element: <PrivateRouter><DashboardLayout /></PrivateRouter>,
